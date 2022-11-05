@@ -6,7 +6,7 @@
 /*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:31:54 by aait-lfd          #+#    #+#             */
-/*   Updated: 2022/11/04 13:00:22 by aait-lfd         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:18:13 by aait-lfd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ static int	ft_print_specifier(char sp, va_list list, char *prefix)
 		len += ft_putstr(va_arg(list, char *));
 	else if (sp == 'x' || sp == 'X' || sp == 'p' || sp == 'u' || sp == 'c')
 		len += ft_print_specifier2(sp, list, prefix);
-	else if (sp == '%')
-		len += ft_putchar('%');
 	else
 		len += ft_putchar(sp);
 	return (len);
@@ -88,6 +86,7 @@ static void	print(const char *str, va_list list, int *len)
 	int		i;
 	char	prefix[3];
 
+	ft_bzero(prefix, 3);
 	i = 0;
 	while (str[i])
 	{
