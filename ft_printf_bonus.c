@@ -6,7 +6,7 @@
 /*   By: aait-lfd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:31:54 by aait-lfd          #+#    #+#             */
-/*   Updated: 2022/11/05 15:18:13 by aait-lfd         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:22:51 by aait-lfd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ static void	print(const char *str, va_list list, int *len)
 			if (prefix[0] + prefix[1] + prefix[2] != 0 && !str[i + 1])
 				break ;
 			*len += ft_print_specifier(str[i + 1], list, prefix);
-			ft_bzero(prefix, 3);
 			i++;
 		}
 		else
 			*len += ft_putchar(str[i]);
+		ft_bzero(prefix, 3);
 		i++;
 	}
 }
@@ -115,4 +115,10 @@ int	ft_printf(const char *str, ...)
 	print(str, list, &len);
 	va_end(list);
 	return (len);
+}
+
+int	main(void)
+{
+	ft_printf("|%++d", 545);
+	return (0);
 }
